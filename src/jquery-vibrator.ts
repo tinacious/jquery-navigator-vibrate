@@ -70,7 +70,7 @@ interface Window {
       case 'pulseCount':
       case 'pulseInterval':
         if (isValid(option, options)) {
-          return Math.round(options[option]);
+          return options[option];
         }
 
         console.warn(`jquery-vibrator options.${option} ${options[option]} is invalid and must be a number. Using ${defaults[option]}`);
