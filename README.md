@@ -30,7 +30,14 @@ Safari and Safari on iOS do not currently support `window.navigator.vibrate()`.
 Find an element with jQuery and execute the plugin with options:
 
 ```js
-$('.js-btn').vibrate(options);
+$('.js-vibrating-btn').vibrate({
+  time: 300,
+  style: 'constant',
+  event: 'click',
+  pulseCount: 3,
+  pulseInterval: 300,
+  onVibrateComplete: function () {}
+});
 ```
 
 It assumes you have HTML as follows:
