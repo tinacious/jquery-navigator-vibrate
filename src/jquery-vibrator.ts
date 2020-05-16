@@ -111,7 +111,7 @@ const defaults: JQueryVibratorOptions = {
    * @param config
    * @param callback
    */
-  function pulse(config: JQueryVibratorOptions, callback: JQueryVibratorOptions["onVibrateComplete"]) {
+  function pulse(config: JQueryVibratorOptions) {
     let pulsed = 1;
     const { pulseCount, pulseInterval, time } = config;
 
@@ -121,7 +121,7 @@ const defaults: JQueryVibratorOptions = {
     const intervalId = setInterval(function () {
       if (pulsed === pulseCount) {
         clearInterval(intervalId);
-        setTimeout(callback, pulseInterval);
+        setTimeout(config.onVibrateComplete, pulseInterval);
       }
 
       vibrate(time);
@@ -140,6 +140,34 @@ const defaults: JQueryVibratorOptions = {
     const itemsDelay = numbers.reduce((a, b) => a + b, 0);
     const itemsPauseDelay = numbers.length;
     return itemsDelay + itemsPauseDelay;
+  }
+
+
+  /**
+   * Vibrate using the time list style
+   * @param config
+   */
+  function vibrateList(config: JQueryVibratorOptions) {
+    const timeList = <number[]>config.time;
+    const completionTime = getCompletionTime(timeList);
+
+    vibrate(config.time);
+    setTimeout(config.onVibrateComplete, completionTime);
+  }
+
+
+  /**
+   * Vibrate using the constant style
+   * @param config
+   */
+  function vibrateConstant(config: JQueryVibratorOptions) {
+    const { onVibrateComplete } = config;
+    const timeout = Array.isArray(config.time) ?
+      <number>defaults.time :
+      <number>config.time;
+
+    vibrate(config.time);
+    setTimeout(onVibrateComplete, timeout);
   }
 
 
@@ -163,29 +191,19 @@ const defaults: JQueryVibratorOptions = {
       return this.each(function (_index: number, obj: HTMLElement) {
         const $obj = $(obj);
 
-        const { event, style, time, onVibrateComplete } = config;
-
-        $obj.on(event, function () {
-          switch (style) {
+        $obj.on(config.event, function () {
+          switch (config.style) {
             case 'constant':
-              vibrate(time);
-              setTimeout(onVibrateComplete, time);
-              break;
+              return vibrateConstant(config);
 
             case 'pulse':
-              pulse(config, onVibrateComplete);
-              break;
+              return pulse(config);
 
             case 'list':
-              if (Array.isArray(time)) {
-                const completionTime = getCompletionTime(time);
-                vibrate(time);
-                setTimeout(onVibrateComplete, completionTime);
-              } else {
-                console.warn(`jquery-vibrator options.style is invalid for time ${time}. Using constant`);
-                vibrate(time);
-                setTimeout(onVibrateComplete, time);
-              }
+              return Array.isArray(config.time) ?
+                vibrateList(config) :
+                vibrateConstant(config);
+
             default:
               return null;
           }
