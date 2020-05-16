@@ -73,7 +73,7 @@ interface Window {
           return options[option];
         }
 
-        console.warn(`jquery-vibrator options.${option} ${options[option]} is invalid and must be a number. Using ${defaults[option]}`);
+        console.warn(`jquery-navigator-vibrate options.${option} ${options[option]} is invalid and must be a number. Using ${defaults[option]}`);
         return defaults[option];
 
       case 'onVibrateComplete':
@@ -82,7 +82,7 @@ interface Window {
         }
 
         if (options.onVibrateComplete) {
-          console.warn('jquery-vibrator options.onVibrateComplete must be a function');
+          console.warn('jquery-navigator-vibrate options.onVibrateComplete must be a function');
         }
 
         return function () {};
@@ -92,7 +92,7 @@ interface Window {
           return options.style;
         }
 
-        console.warn(`jquery-vibrator options.style is invalid and must be one of ${validStyles.join(', ')}. Using ${defaults.style}`);
+        console.warn(`jquery-navigator-vibrate options.style is invalid and must be one of ${validStyles.join(', ')}. Using ${defaults.style}`);
         return defaults.style;
 
       default:
@@ -167,11 +167,11 @@ interface Window {
 
 
   /**
-   * jquery-vibrator object
+   * jquery-navigator-vibrate object
    */
   $.fn.extend({
     /**
-     * jquery-vibrator exposes the `vibrate` method which takes options
+     * jquery-navigator-vibrate exposes the `vibrate` method which takes options
      * @param options JQueryVibratorOption
      */
     vibrate: function (options = defaults) {

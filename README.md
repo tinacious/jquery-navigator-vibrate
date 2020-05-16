@@ -1,10 +1,10 @@
-# 📳 jquery-vibrator
+# 📳 jquery-navigator-vibrate
 
-![CI](https://github.com/tinacious/jquery-vibrator/workflows/CI/badge.svg?branch=master)
+![CI](https://github.com/tinacious/jquery-navigator-vibrate/workflows/CI/badge.svg?branch=master)
 
 A light wrapper around `window.navigator.vibrate()` so you can use it with jQuery.
 
-👉 **[View demo](https://tinacious.github.io/jquery-vibrator/)**
+👉 **[View demo](https://tinacious.github.io/jquery-navigator-vibrate/)**
 
 - [Browser support](#browser-support)
 - [Usage](#usage)
@@ -32,7 +32,7 @@ Safari and Safari on iOS do not currently support `window.navigator.vibrate()`.
 
 ## Usage
 
-Download the package and import the `./lib/jquery-vibrator.js` file after jQuery.
+Download the package and import the `./lib/jquery-navigator-vibrate.js` file after jQuery.
 
 Find an element with jQuery and execute the plugin with options:
 
@@ -122,7 +122,7 @@ npm start
 
 ### Run the TypeScript compilation
 
-This runs the TypeScript compilation and outputs it to `./lib/jquery-vibrator.js`
+This runs the TypeScript compilation and outputs it to `./lib/jquery-navigator-vibrate.js`
 
 ```
 npm run dev

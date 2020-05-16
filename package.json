@@ -1,9 +1,9 @@
 {
-  "name": "jquery-vibrator",
+  "name": "jquery-navigator-vibrate",
   "version": "1.0.0",
   "description": "Vibrate the web 📳 jQuery plugin written in TypeScript that's a light wrapper around navigator.vibrate()",
-  "repository": "github:tinacious/jquery-vibrator",
-  "main": "lib/jquery-vibrator.js",
+  "repository": "github:tinacious/jquery-navigator-vibrate",
+  "main": "lib/jquery-navigator-vibrate.js",
   "scripts": {
     "start": "dev-server index.html",
     "dev": "tsc --watch",
