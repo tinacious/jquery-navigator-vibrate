@@ -65,7 +65,7 @@ Time in milliseconds for the length of the vibration or a list of integers.
 
 #### `style`
 
-Enum ( constant | pulse ) (default: constant)
+Enum ( constant | pulse | list ) (default: constant)
 
 ##### `constant`
 
