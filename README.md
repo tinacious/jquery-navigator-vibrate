@@ -4,6 +4,7 @@ A light wrapper around `window.navigator.vibrate()` so you can use it with jQuer
 
 👉 **[View demo](https://tinacious.github.io/jquery-vibrator/)**
 
+- [Browser support](#browser-support)
 - [Usage](#usage)
   - [Options](#options)
     - [`time`](#time)
@@ -15,6 +16,13 @@ A light wrapper around `window.navigator.vibrate()` so you can use it with jQuer
     - [`pulseInterval`](#pulseinterval)
     - [`event`](#event)
     - [`onVibrateComplete`](#onvibratecomplete)
+
+
+## Browser support
+
+At the time of publishing, [browser support](https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API#Browser_compatibility) is limited to Chrome, Edge, and Android browsers.
+
+Safari and Safari on iOS do not currently support `window.navigator.vibrate()`.
 
 
 ## Usage
