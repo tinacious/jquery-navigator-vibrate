@@ -1,6 +1,8 @@
-# jquery-vibrator
+# 📳 jquery-vibrator
 
 A light wrapper around `window.navigator.vibrate()` so you can use it with jQuery.
+
+👉 **[View demo](https://tinacious.github.io/jquery-vibrator/)**
 
 - [Usage](#usage)
   - [Options](#options)
@@ -13,7 +15,6 @@ A light wrapper around `window.navigator.vibrate()` so you can use it with jQuer
     - [`event`](#event)
     - [`onVibrateComplete`](#onvibratecomplete)
 
-**[View demo](https://tinacious.github.io/jquery-vibrator/)**
 
 ## Usage
 
