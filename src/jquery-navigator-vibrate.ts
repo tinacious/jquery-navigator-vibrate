@@ -132,7 +132,7 @@ interface Window {
    * @return number
    */
   function getCompletionTime(numbers: number[]): number {
-    const itemsDelay = numbers.reduce((a, b) => a + b, 0);
+    const itemsDelay = numbers.reduce((a, b) => a + b, 500);
     const itemsPauseDelay = numbers.length;
     return itemsDelay + itemsPauseDelay;
   }
