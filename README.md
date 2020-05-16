@@ -1,5 +1,7 @@
 # 📳 jquery-vibrator
 
+![](https://github.com/tinacious/jquery-vibrator/workflows/CI/badge.svg)
+
 A light wrapper around `window.navigator.vibrate()` so you can use it with jQuery.
 
 👉 **[View demo](https://tinacious.github.io/jquery-vibrator/)**
