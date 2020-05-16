@@ -68,7 +68,6 @@ const defaults: JQueryVibratorOptions = {
       case 'pulseCount':
         if (isValid('pulseCount', options)) {
           return options.pulseCount
-          // return Math.round(options.pulseCount);
         }
 
         console.warn(`jquery-vibrator options.pulseCount is invalid and must be a number. Using ${defaults.pulseCount}`);
