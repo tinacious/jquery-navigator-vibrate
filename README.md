@@ -50,7 +50,7 @@ $('.js-vibrating-btn').vibrate({
 It assumes you have HTML as follows:
 
 ```html
-<button class="js-btn">click me</button>
+<button class="js-vibrating-btn">click me</button>
 ```
 
 ### Options
