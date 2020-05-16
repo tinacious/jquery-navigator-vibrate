@@ -1,6 +1,3 @@
-interface Window {
-    jQuery: any;
-}
 declare type JQueryVibratorStyles = 'constant' | 'pulse' | 'list';
 declare type JQueryVibratorOption = 'time' | 'style' | 'event' | 'pulseCount' | 'pulseInterval' | 'onVibrateComplete';
 declare type JQueryVibratorOptions = {
@@ -11,5 +8,6 @@ declare type JQueryVibratorOptions = {
     pulseInterval: number;
     onVibrateComplete: (...args: any[]) => any;
 };
-declare const validStyles: JQueryVibratorStyles[];
-declare const defaults: JQueryVibratorOptions;
+interface Window {
+    jQuery: any;
+}

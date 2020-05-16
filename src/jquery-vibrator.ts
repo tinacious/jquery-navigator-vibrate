@@ -1,7 +1,3 @@
-interface Window {
-  jQuery: any;
-}
-
 type JQueryVibratorStyles = 'constant' | 'pulse' | 'list';
 
 type JQueryVibratorOption = 'time' | 'style' | 'event' | 'pulseCount' | 'pulseInterval' | 'onVibrateComplete';
@@ -15,18 +11,24 @@ type JQueryVibratorOptions = {
   onVibrateComplete: (...args: any[]) => any;
 }
 
-const validStyles: JQueryVibratorStyles[] = ['constant', 'pulse', 'list'];
+interface Window {
+  jQuery: any;
+}
 
-const defaults: JQueryVibratorOptions = {
-  time: 300,
-  style: 'constant',
-  event: 'click',
-  pulseCount: 3,
-  pulseInterval: 300,
-  onVibrateComplete: function () {}
-};
 
 (function ($) {
+  const validStyles: JQueryVibratorStyles[] = ['constant', 'pulse', 'list'];
+
+  const defaults: JQueryVibratorOptions = {
+    time: 300,
+    style: 'constant',
+    event: 'click',
+    pulseCount: 3,
+    pulseInterval: 300,
+    onVibrateComplete: function () {}
+  };
+
+
   /**
    * How long in ms to vibrate for
    * @param time
@@ -50,7 +52,7 @@ const defaults: JQueryVibratorOptions = {
 
       case 'pulseCount':
       case 'pulseInterval':
-        return typeof options[option] === 'number';
+        return !options[option] || typeof options[option] === 'number';
 
       default:
           return true;
@@ -66,20 +68,13 @@ const defaults: JQueryVibratorOptions = {
   function getValidOption(option: JQueryVibratorOption, options: JQueryVibratorOptions = defaults) {
     switch (option) {
       case 'pulseCount':
-        if (isValid('pulseCount', options)) {
-          return options.pulseCount
-        }
-
-        console.warn(`jquery-vibrator options.pulseCount is invalid and must be a number. Using ${defaults.pulseCount}`);
-        return defaults.pulseCount;
-
       case 'pulseInterval':
-        if (isValid('pulseInterval', options)) {
-          return Math.round(options.pulseInterval);
+        if (isValid(option, options)) {
+          return Math.round(options[option]);
         }
 
-        console.warn(`jquery-vibrator options.pulseInterval is invalid and must be a number. Using ${defaults.pulseInterval}`);
-        return defaults.pulseInterval;
+        console.warn(`jquery-vibrator options.${option} ${options[option]} is invalid and must be a number. Using ${defaults[option]}`);
+        return defaults[option];
 
       case 'onVibrateComplete':
         if (typeof options.onVibrateComplete === 'function') {
