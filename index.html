@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+  <title>jQuery Vibrator</title>
+  <link rel="stylesheet" type="text/css"
+    href="https://gistcdn.githack.com/tinacious/d89f3daf0e4555a2dc23fd3beb14e179/raw/5bd576497143efb5c1374cc3a02fa7e9191bc678/plugin-styles.css">
+  <!-- plugin files -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+  <style>
+    /* demo theme styles */
+    .container {
+      max-width: 600px;
+    }
+
+    .site-header .logo {
+      width: 100%;
+    }
+
+    .logo span,
+    .logo img {
+      display: block;
+      float: left;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    .logo span {
+      padding: 10px 0 0 10px;
+    }
+
+    .site-header {
+      padding: 5px 0;
+      z-index: 10;
+    }
+
+    @media (max-width: 767px) {
+      .site-header .logo span {
+        display: block;
+      }
+    }
+
+
+    .demo-wrapper {
+      margin-bottom: 50px;
+      line-height: 1.6;
+    }
+
+    .btn-layout {
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+
+    .btn {
+      margin-bottom: 30px;
+      padding: 10px 20px;
+    }
+
+    code, pre {
+      background: #efefef;
+      padding: 6px;
+    }
+
+    pre {
+      margin: 0;
+      margin-bottom: 20px;
+    }
+
+  </style>
+  <script type="text/javascript" src="lib/jquery-vibrator.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.js-0').vibrate();
+
+      $('.js-1').vibrate({ time: 100 });
+
+      $('.js-2').vibrate({ time: 2000 });
+
+      $('.js-3').vibrate({
+        style: 'pulse',
+        time: 500,
+        pulseCount: 4,
+        pulseInterval: 1000
+      });
+
+      $('.js-4').vibrate({
+        style: 'pulse',
+        time: 200,
+        pulseCount: 20,
+        pulseInterval: 100
+      });
+
+      $('.js-5').vibrate({
+        style: 'pulse',
+        onVibrateComplete: function () {
+          window.alert('Done!');
+        }
+      });
+
+      $('.js-6').vibrate({
+        time: 1000,
+        onVibrateComplete: function () {
+          window.alert('Done!');
+        }
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <header id="header" class="site-header">
+    <div class="container">
+      <div class="logo">
+        <img src="https://tinaciousdesign.com/images/td-logo.png" alt="Tinacious Design logo" width="50">
+        <span><b><a href="https://tinaciousdesign.com/">Tinacious Design</a></b> &ndash; plugin demos</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="site-content">
+    <div class="container">
+      <div class="demo-wrapper">
+        <h1>jQuery vibrator</h1>
+        <p>
+          This plugin leverages <code>window.navigator.vibrate()</code> to add vibrations to your elements.
+        </p>
+        <p>
+          It supports both <strong>constant</strong> and <strong>pulse</strong> variants.
+        </p>
+        <p>
+          You call the plugin like this:
+        </p>
+<pre><code>$('.js-vibrating-btn').vibrate({
+    time: 300,
+    style: 'constant',
+    event: 'click',
+    pulseCount: 3,
+    pulseInterval: 300,
+    onVibrateComplete: function () {}
+  });</code></pre>
+      </div>
+
+      <div class="demo-wrapper">
+        <div class="btn-layout">
+          <h2>Constant</h2>
+          <p>
+            Default
+          </p>
+          <button class="btn js-0">
+            default
+          </button>
+
+          <p>
+            With configuration: <code>{ time: 100 }</code>
+          </p>
+          <button class="btn js-1">
+            Short! ⚡️
+          </button>
+
+          <p>
+            With configuration: <code>{ time: 2000 }</code>
+          </p>
+          <button class="btn js-2">
+            Long! 🛣
+          </button>
+
+          <h3>Callback</h3>
+          <p>
+            You can pass a callback <code>onVibrateComplete</code> to be called when it's done.
+          </p>
+<pre><code>{
+  time: 1000,
+  onVibrateComplete: function () {
+    window.alert('Done!')
+  }
+}</code></pre>
+          <button class="btn js-6">
+            With callback 📞
+          </button>
+
+          <h2>Pulse</h2>
+          <p>
+            With configuration:
+          </p>
+<pre><code>{
+  time: 500,
+  style: 'pulse',
+  pulseCount: 4,
+  pulseInterval: 1000
+}</code></pre>
+          <button class="btn js-3">
+            Slow pulse! 🐢
+          </button>
+
+          <p>
+            With configuration:
+          </p>
+<pre><code>{
+  time: 200,
+  style: 'pulse',
+  pulseCount: 20,
+  pulseInterval: 100
+}</code></pre>
+          <button class="btn js-4">
+            Fast pulse! 🚀 200ms - pulse * 20 / 100ms
+          </button>
+
+          <h3>Callback</h3>
+          <p>
+            You can pass a callback <code>onVibrateComplete</code> to be called when it's done.
+          </p>
+<pre><code>{
+  time: 500,
+  style: 'pulse',
+  onVibrateComplete: function () {
+    window.alert('Done!')
+  }
+}</code></pre>
+          <button class="btn js-5">
+            With callback 📲
+          </button>
+        </div>
+      </div>
+
+      <p>
+        <a href="https://github.com/tinacious/jquery-vibrator" class="btn">Download on Github</a>
+      </p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "jquery-vibrator",
+  "version": "1.0.0",
+  "description": "jQuery plugin that leverages navigator.vibrate() to support adding vibrations to websites",
+  "main": "lib/jquery-vibrator.js",
+  "scripts": {
+    "start": "dev-server index.html",
+    "dev": "parcel src/index.html -p 4000 --out-dir tmp",
+    "build": "NODE_ENV=production tsc",
+    "test": "tsc"
+  },
+  "author": "Tina Holly",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jquery": "^3.3.38",
+    "dev-server": "^0.1.0",
+    "parcel": "^1.12.4",
+    "typescript": "^3.9.2"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
