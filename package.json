@@ -1,7 +1,7 @@
 {
   "name": "jquery-vibrator",
   "version": "1.0.0",
-  "description": "jQuery plugin that leverages navigator.vibrate() to support adding vibrations to websites",
+  "description": "Vibrate the web 📳 jQuery plugin that's a light wrapper around navigator.vibrate()",
   "main": "lib/jquery-vibrator.js",
   "scripts": {
     "start": "dev-server index.html",

@@ -16,6 +16,9 @@ A light wrapper around `window.navigator.vibrate()` so you can use it with jQuer
     - [`pulseInterval`](#pulseinterval)
     - [`event`](#event)
     - [`onVibrateComplete`](#onvibratecomplete)
+- [Development](#development)
+  - [Run the dev server](#run-the-dev-server)
+  - [Run the TypeScript compilation](#run-the-typescript-compilation)
 
 
 ## Browser support
@@ -98,3 +101,25 @@ The DOM event to listen to, i.e. `$(selector).on(event)`
 Function
 
 An optional function to call when the vibration is complete.
+
+
+## Development
+
+You'll need to run 2 terminal windows:
+
+
+### Run the dev server
+
+This hosts the `index.html` file and points to the compiled library.
+
+```
+npm start
+```
+
+### Run the TypeScript compilation
+
+This runs the TypeScript compilation and outputs it to `./lib/jquery-vibrator.js`
+
+```
+npm run dev
+```
