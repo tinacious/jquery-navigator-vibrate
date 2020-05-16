@@ -98,7 +98,7 @@ A number of vibrations. Uses properties `pulseCount` and `pulseInterval`.
 
 ##### `list`
 
-An array of numbers. This is an alternative to using `pulse`. By default, the pause between each number is 100ms.
+An array of numbers. This is an alternative to using `pulse`. To learn about this method, read the documentation for the [Vibration API](https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API#Vibration_patterns).
 
 #### `pulseCount`
 
