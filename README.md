@@ -1,6 +1,6 @@
 # 📳 jquery-vibrator
 
-![CI](https://github.com/tinacious/jquery-vibrator/workflows/Node.js%20CI/badge.svg?branch=master)
+![CI](https://github.com/tinacious/jquery-vibrator/workflows/CI/badge.svg?branch=master)
 
 A light wrapper around `window.navigator.vibrate()` so you can use it with jQuery.
 
