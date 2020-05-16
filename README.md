@@ -3,15 +3,15 @@
 A light wrapper around `window.navigator.vibrate()` so you can use it with jQuery.
 
 - [Usage](#usage)
-- [Options](#options)
-  - [`time`](#time)
-  - [`style`](#style)
-    - [`constant`](#constant)
-    - [`pulse`](#pulse)
-  - [`pulseCount`](#pulsecount)
-  - [`pulseInterval`](#pulseinterval)
-  - [`event`](#event)
-  - [`onVibrateComplete`](#onvibratecomplete)
+  - [Options](#options)
+    - [`time`](#time)
+    - [`style`](#style)
+      - [`constant`](#constant)
+      - [`pulse`](#pulse)
+    - [`pulseCount`](#pulsecount)
+    - [`pulseInterval`](#pulseinterval)
+    - [`event`](#event)
+    - [`onVibrateComplete`](#onvibratecomplete)
 
 
 ## Usage
@@ -28,50 +28,50 @@ It assumes you have HTML as follows:
 <button class="js-btn">click me</button>
 ```
 
-## Options
+### Options
 
-### `time`
+#### `time`
 
 Integer (default: 300)
 
 Time in milliseconds for the length of the vibration.
 
 
-### `style`
+#### `style`
 
 Enum ( constant | pulse ) (default: constant)
 
-#### `constant`
+##### `constant`
 
 A single vibration for the time specified
 
-#### `pulse`
+##### `pulse`
 
 A number of vibrations. Uses properties `pulseCount` and `pulseInterval`.
 
 
-### `pulseCount`
+#### `pulseCount`
 
 Integer (default: 3)
 
 Number of times to vibrate.
 
 
-### `pulseInterval`
+#### `pulseInterval`
 
 Integer (default: 300)
 
 Time in milliseconds for the length of the interval between vibrations.
 
 
-### `event`
+#### `event`
 
 String (default: click)
 
 The DOM event to listen to, i.e. `$(selector).on(event)`
 
 
-### `onVibrateComplete`
+#### `onVibrateComplete`
 
 Function
 
