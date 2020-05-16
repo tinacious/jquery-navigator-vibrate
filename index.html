@@ -120,6 +120,10 @@
           window.alert('That was SOS in Morse code! 🆘');
         }
       });
+
+      $('.js-8').vibrate({
+        event: 'touchstart'
+      });
     });
 
   </script>
@@ -219,6 +223,15 @@
 }</code></pre>
           <button class="btn js-7">
             Series of numbers 1️⃣2️⃣3️⃣
+          </button>
+
+          <h3>Custom event</h3>
+          <p>
+            The following runs on <code>touchstart</code>
+          </p>
+          <pre><code>{ event: 'touchstart' }</code></pre>
+          <button class="btn js-8">
+            on touchstart 👍
           </button>
 
           <h2>Pulse</h2>
