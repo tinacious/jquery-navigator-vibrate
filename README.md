@@ -13,6 +13,7 @@ A light wrapper around `window.navigator.vibrate()` so you can use it with jQuer
     - [`event`](#event)
     - [`onVibrateComplete`](#onvibratecomplete)
 
+**[View demo](https://tinacious.github.io/jquery-vibrator/)**
 
 ## Usage
 
