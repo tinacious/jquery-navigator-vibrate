@@ -2,12 +2,12 @@ interface Window {
   jQuery: any;
 }
 
-type JQueryVibratorStyles = 'constant' | 'pulse';
+type JQueryVibratorStyles = 'constant' | 'pulse' | 'list';
 
 type JQueryVibratorOption = 'time' | 'style' | 'event' | 'pulseCount' | 'pulseInterval' | 'onVibrateComplete';
 
 type JQueryVibratorOptions = {
-  time: number;
+  time: number | number[];
   style: JQueryVibratorStyles;
   event: string;
   pulseCount: number;
@@ -15,7 +15,7 @@ type JQueryVibratorOptions = {
   onVibrateComplete: (...args: any[]) => any;
 }
 
-const validStyles: JQueryVibratorStyles[] = ['constant', 'pulse'];
+const validStyles: JQueryVibratorStyles[] = ['constant', 'pulse', 'list'];
 
 const defaults: JQueryVibratorOptions = {
   time: 300,
@@ -31,12 +31,18 @@ const defaults: JQueryVibratorOptions = {
    * How long in ms to vibrate for
    * @param time
    */
-  function vibrate(time: number) {
+  function vibrate(time: number | number[]) {
     if (typeof window.navigator.vibrate === 'function') {
       window.navigator.vibrate(time);
     }
   }
 
+
+  /**
+   * Verifies if the provided option is valid
+   * @param option
+   * @param options
+   */
   function isValid(option: JQueryVibratorOption, options: JQueryVibratorOptions = defaults) {
     switch (option) {
       case 'style':
@@ -44,20 +50,25 @@ const defaults: JQueryVibratorOptions = {
 
       case 'pulseCount':
       case 'pulseInterval':
-        return typeof options[option] === 'number' ?
-          Math.round(options[option]) :
-          defaults[option];
+        return typeof options[option] === 'number';
 
       default:
           return true;
     }
   }
 
+
+  /**
+   * Validates the provided option. If not, will fall back to the default.
+   * @param option
+   * @param options
+   */
   function getValidOption(option: JQueryVibratorOption, options: JQueryVibratorOptions = defaults) {
     switch (option) {
       case 'pulseCount':
         if (isValid('pulseCount', options)) {
-          return options.pulseCount;
+          return options.pulseCount
+          // return Math.round(options.pulseCount);
         }
 
         console.warn(`jquery-vibrator options.pulseCount is invalid and must be a number. Using ${defaults.pulseCount}`);
@@ -65,7 +76,7 @@ const defaults: JQueryVibratorOptions = {
 
       case 'pulseInterval':
         if (isValid('pulseInterval', options)) {
-          return options.pulseInterval;
+          return Math.round(options.pulseInterval);
         }
 
         console.warn(`jquery-vibrator options.pulseInterval is invalid and must be a number. Using ${defaults.pulseInterval}`);
@@ -95,6 +106,12 @@ const defaults: JQueryVibratorOptions = {
     }
   }
 
+
+  /**
+   * Pulse, with optional callback.
+   * @param config
+   * @param callback
+   */
   function pulse(config: JQueryVibratorOptions, callback: JQueryVibratorOptions["onVibrateComplete"]) {
     let pulsed = 1;
     const { pulseCount, pulseInterval, time } = config;
@@ -114,7 +131,27 @@ const defaults: JQueryVibratorOptions = {
     }, pulseInterval);
   }
 
+
+  /**
+   * The completion time is roughly the number of items plus the sum of all of the numbers
+   * @param numbers
+   * @return number
+   */
+  function getCompletionTime(numbers: number[]): number {
+    const itemsDelay = numbers.reduce((a, b) => a + b, 0);
+    const itemsPauseDelay = numbers.length;
+    return itemsDelay + itemsPauseDelay;
+  }
+
+
+  /**
+   * jquery-vibrator object
+   */
   $.fn.extend({
+    /**
+     * jquery-vibrator exposes the `vibrate` method which takes options
+     * @param options JQueryVibratorOption
+     */
     vibrate: function (options = defaults) {
       const config = $.extend({}, defaults, options, {
         time: getValidOption('time', options),
@@ -139,6 +176,19 @@ const defaults: JQueryVibratorOptions = {
             case 'pulse':
               pulse(config, onVibrateComplete);
               break;
+
+            case 'list':
+              if (Array.isArray(time)) {
+                const completionTime = getCompletionTime(time);
+                vibrate(time);
+                setTimeout(onVibrateComplete, completionTime);
+              } else {
+                console.warn(`jquery-vibrator options.style is invalid for time ${time}. Using constant`);
+                vibrate(time);
+                setTimeout(onVibrateComplete, time);
+              }
+            default:
+              return null;
           }
         });
       });

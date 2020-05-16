@@ -53,7 +53,7 @@
     }
 
     .btn-layout {
-      max-width: 400px;
+      max-width: 460px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -110,6 +110,14 @@
         time: 1000,
         onVibrateComplete: function () {
           window.alert('Done!');
+        }
+      });
+
+      $('.js-7').vibrate({
+        style: 'list',
+        time: [100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100],
+        onVibrateComplete: function () {
+          window.alert('That was SOS in Morse code! 🆘');
         }
       });
     });
@@ -186,6 +194,24 @@
 }</code></pre>
           <button class="btn js-6">
             With callback 📞
+          </button>
+
+          <h3>List of numbers</h3>
+          <p>
+            The <strong>time</strong> option can also support a list of integers.
+          </p>
+<pre><code>{
+  time: [
+    100, 30, 100, 30, 100,
+    30, 200, 30, 200, 30, 200,
+    30, 100, 30, 100, 30, 100
+  ],
+  onVibrateComplete: function () {
+    window.alert('That was SOS in Morse code! 🆘');
+  }
+}</code></pre>
+          <button class="btn js-7">
+            Series of numbers 1️⃣2️⃣3️⃣
           </button>
 
           <h2>Pulse</h2>

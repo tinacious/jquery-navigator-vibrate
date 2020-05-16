@@ -5,6 +5,7 @@
   "main": "lib/jquery-vibrator.js",
   "scripts": {
     "start": "dev-server index.html",
+    "dev": "tsc --watch",
     "build": "NODE_ENV=production tsc",
     "test": "tsc"
   },

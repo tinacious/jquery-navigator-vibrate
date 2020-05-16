@@ -10,6 +10,7 @@ A light wrapper around `window.navigator.vibrate()` so you can use it with jQuer
     - [`style`](#style)
       - [`constant`](#constant)
       - [`pulse`](#pulse)
+      - [`list`](#list)
     - [`pulseCount`](#pulsecount)
     - [`pulseInterval`](#pulseinterval)
     - [`event`](#event)
@@ -34,9 +35,10 @@ It assumes you have HTML as follows:
 
 #### `time`
 
-Integer (default: 300)
+- Integer (default: 300)
+- Integer list, e.g. `[100, 200, 300]`
 
-Time in milliseconds for the length of the vibration.
+Time in milliseconds for the length of the vibration or a list of integers.
 
 
 #### `style`
@@ -51,6 +53,9 @@ A single vibration for the time specified
 
 A number of vibrations. Uses properties `pulseCount` and `pulseInterval`.
 
+##### `list`
+
+An array of numbers. This is an alternative to using `pulse`. By default, the pause between each number is 100ms.
 
 #### `pulseCount`
 
