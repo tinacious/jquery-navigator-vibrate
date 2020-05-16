@@ -32,6 +32,8 @@ Safari and Safari on iOS do not currently support `window.navigator.vibrate()`.
 
 ## Usage
 
+Download the package and import the `./lib/jquery-vibrator.js` file after jQuery.
+
 Find an element with jQuery and execute the plugin with options:
 
 ```js
