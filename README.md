@@ -8,6 +8,8 @@ A light wrapper around `window.navigator.vibrate()` so you can use it with jQuer
 
 - [Browser support](#browser-support)
 - [Usage](#usage)
+  - [Installation](#installation)
+  - [Implementation](#implementation)
   - [Options](#options)
     - [`time`](#time)
     - [`style`](#style)
@@ -32,7 +34,26 @@ Safari and Safari on iOS do not currently support `window.navigator.vibrate()`.
 
 ## Usage
 
+### Installation
+
 Download the package and import the `./lib/jquery-navigator-vibrate.js` file after jQuery.
+
+You can also install via NPM:
+
+```
+npm install jquery-navigator-vibrate --save
+```
+
+Or Yarn:
+
+```
+yarn add jquery-navigator-vibrate
+```
+
+Add it to your build tooling and insure it loads in the browser.
+
+
+### Implementation
 
 Find an element with jQuery and execute the plugin with options:
 
