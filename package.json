@@ -1,6 +1,6 @@
 {
   "name": "jquery-navigator-vibrate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Vibrate the web 📳 jQuery plugin written in TypeScript that's a light wrapper around navigator.vibrate()",
   "repository": "github:tinacious/jquery-navigator-vibrate",
   "main": "lib/jquery-navigator-vibrate.js",
